@@ -1,0 +1,202 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    margin: 0;
+    background-color: #f0f0f0;
+    color: rgb(77, 77, 77);
+}
+
+.container {
+    width: 60%;
+    height: 800px;
+    margin: auto;
+    overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    background: #fff;
+    color: #333;
+    padding-top: 20px;
+    min-height: 70px;
+    border-bottom: #ddd 1px solid;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header nav .menu {
+    display: flex;
+}
+
+header nav .menu a {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+}
+
+header nav .profile {
+    display: flex;
+    align-items: center;
+}
+
+header nav .profile img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+main .schedule {
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+main .schedule .days {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+main .schedule .lessons {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+main .schedule .lesson {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+main .schedule .lesson:last-child {
+    border-bottom: none;
+}
+
+main .schedule .actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+main .schedule .actions a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+table {
+    
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid rgb(163, 163, 163); 
+    
+
+  }
+  
+  th, td {
+    
+    border: 2px solid rgb(163, 163, 163);
+    padding: 13px;
+    text-align: center;
+    
+  }
+
+  th:first-child,
+td:first-child {
+  width: 100px; 
+  min-width: 100px; 
+}
+main .container {
+    height: 700px;
+}
+.logo {
+    width: 100px;
+}
+.logo img {
+    width: 100px; 
+    height: auto;
+}
+.profile {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-left: auto; 
+margin-right: 10px;
+padding-bottom: 10px;
+text-decoration: none;
+
+}
+.auth {
+    display: flex; 
+  gap: 0x; 
+  align-items: center; 
+}
+.auth a {
+    color: rgb(77, 77, 77);
+    text-decoration: none;
+  padding: 8px 16px;
+  font-weight: bold;
+}
+.auth button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: rgb(104, 104, 187);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      border: solid 2px rgb(104, 104, 187);
+}
+.auth button:hover {
+    margin-top: 20px;
+    width: 100%;
+      padding: 10px;
+      background-color: rgb(255, 255, 255);
+      color: rgb(104, 104, 187);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      border: solid 2px rgb(104, 104, 187);
+}
+.groupselect {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto; 
+    margin-right: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    
+    }
+    .group button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: rgb(104, 104, 187);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        border: solid 2px rgb(104, 104, 187);
+  }
+  .group button:hover {
+      margin-top: 20px;
+      width: 100%;
+        padding: 10px;
+        background-color: rgb(255, 255, 255);
+        color: rgb(104, 104, 187);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        border: solid 2px rgb(104, 104, 187);
+  }
