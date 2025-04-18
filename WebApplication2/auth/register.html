@@ -1,67 +1,110 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Регистрация</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f0f0;
-    }
-    .register-container {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 300px;
-      text-align: center;
-    }
-    .register-container h2 {
-      margin-bottom: 20px;
-    }
-    .register-container input {
-      width: 80%;
-      padding: 10px;
-      padding-right: 10px;
-      margin: 10px -10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      
-    }
-    .register-container button {
-      margin-top: 20px;
-      width: 80%;
-      padding: 10px;
-      background-color: rgb(104, 104, 187);
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .register-container button:hover {
-      background-color: rgb(64, 64, 119);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .register-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+            .register-container h2 {
+                margin-bottom: 20px;
+            }
+
+            .register-container input, .register-container select {
+                width: 80%;
+                padding: 10px;
+                margin: 10px -10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            .register-container button {
+                margin-top: 20px;
+                width: 80%;
+                padding: 10px;
+                background-color: rgb(104, 104, 187);
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+                .register-container button:hover {
+                    background-color: rgb(64, 64, 119);
+                }
+    </style>
 </head>
 <body>
-  <div class="register-container">
-    <h2>Регистрация</h2>
-    <form action="/api/register" method="POST">
-      <input type="text" name="name" placeholder="Имя" required>
-      <input type="text" name="lastname" placeholder="Фамилия" required>
-      <input type="text" name="patronymic" placeholder="Отчество" required>
-      <input type="text" name="username" placeholder="Имя пользователя" required>
-      <input type="text" name="group" placeholder="Группа" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Пароль" required>
-      <button type="submit">Зарегистрироваться</button>
-    </form>
-  </div>
+    <div class="register-container">
+        <h2>Регистрация</h2>
+        <form id="register-form">
+            <input type="text" name="name" placeholder="Имя" required>
+            <input type="text" name="lastname" placeholder="Фамилия" required>
+            <input type="text" name="patronymic" placeholder="Отчество" required>
+            <input type="text" name="username" placeholder="Имя пользователя" required>
+            <input type="text" name="group" placeholder="Группа">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Пароль" required>
+            <select name="role" required>
+                <option value="" disabled selected>Выберите роль</option>
+                <option value="student">Студент</option>
+                <option value="teacher">Преподаватель</option>
+                <option value="admin">Администратор</option>
+                <option value="technician">Техник</option>
+            </select>
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+    <script>
+    document.getElementById('register-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const data = {
+        FirstName: formData.get('name'),
+        LastName: formData.get('lastname'),
+        Patronymic: formData.get('patronymic'),
+        Username: formData.get('username'),
+        Password: formData.get('password'),
+        Email: formData.get('email'),
+        Role: formData.get('role'),
+        GroupName: formData.get('group') || null
+      };
+      try {
+          const response = await fetch('https://localhost:7296/api/Auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (response.ok) {
+          alert('Регистрация успешна! Пожалуйста, войдите.');
+          window.location.href = 'login.html';
+        } else {
+          const error = await response.json();
+          alert(`Ошибка: ${error.message || 'Не удалось зарегистрироваться'}`);
+        }
+      } catch (err) {
+        console.error('Ошибка:', err);
+        alert('Произошла ошибка. Попробуйте снова.');
+      }
+    });
+    </script>
 </body>
 </html>
